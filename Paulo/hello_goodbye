@@ -1,0 +1,47 @@
+# Adicione os botões "Hello" e "Goodbye"
+
+###################################################
+# Vocês devem adicionar o código para os handlers
+
+import simplegui 
+
+def print_hello():
+    print ('Hello')
+    pass
+
+def print_goodbye():
+    print ('Goodbye')
+    pass
+
+# Handlers para os botões
+#### seus manipuladores de eventos vem aqui!! ####
+
+# Cria o frame e assinala os retornos para as funções
+# que manipulam os eventos
+frame = simplegui.create_frame("Hello and Goodbye", 200, 200)
+frame.add_button("Hello", print_hello)
+frame.add_button("Goodbye", print_goodbye)
+
+
+# Inicia a animação do frame
+frame.start()
+
+
+###################################################
+# Testes
+
+print_hello()
+print_hello()
+print_goodbye()
+print_hello()
+print_goodbye()
+
+###################################################
+# Resultados esperados do teste
+# Utilizem como referência para saber se está certo
+
+#Hello
+#Hello
+#Goodbye
+#Hello
+#Goodbye
