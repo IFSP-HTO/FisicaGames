@@ -1,0 +1,41 @@
+# Eco de um input field
+
+###################################################
+# O código de vocês vem aqui
+
+import simplegui 
+
+# Handlers para input field
+    
+def get_input(text):
+    print(text)
+    pass
+    
+    
+def input_handler(text_input):
+    get_input(inp.get_text())
+    pass
+    
+    
+# Create frame and assign callbacks to event handlers
+# Crie um frame e assinale os callbacks para os event handlers
+frame = simplegui.create_frame("Echo input", 200, 200)
+inp = frame.add_input("My label", input_handler, 50)
+
+# Inicie o frame de animação
+frame.start()
+
+
+###################################################
+# Testes
+
+get_input("First test input")
+get_input("Second test input")
+get_input("Third test input")
+
+###################################################
+# Saída esperada dos testes
+
+#First test input
+#Second test input
+#Third test input
