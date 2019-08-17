@@ -1,0 +1,52 @@
+#https://py3.codeskulptor.org/#user303_eMWFafuvWhkUQMs.py
+
+import simplegui 
+
+# Definição de globais
+HEIGHT = 400
+WIDTH = 400
+
+global RADIUS_INCREMENT
+RADIUS_INCREMENT = 5
+
+global ball_radius
+ball_radius = 20
+
+# Draw handler
+def draw(canvas): 
+    global ball_radius
+    
+    canvas.draw_circle((200, 200), ball_radius, 8, 'Green')
+    
+    pass
+
+
+# Event handlers e botões
+def increase_radius():
+    global ball_radius
+    global RADIUS_INCREMENT
+    
+    ball_radius = ball_radius + RADIUS_INCREMENT
+    
+    pass
+
+
+def decrease_radius():
+    global ball_radius
+    global RADIUS_INCREMENT
+    
+    ball_radius = ball_radius - RADIUS_INCREMENT
+    
+    pass
+
+
+# Cria o frame e assinala os callbacks aos manipuladores de eventos
+frame = simplegui.create_frame("Ball control", WIDTH, HEIGHT)
+frame.set_draw_handler(draw)
+botao_1 = frame.add_button("Increase radius", increase_radius)
+botao_1 = frame.add_button("Decrease radius", decrease_radius)
+
+
+# Inicia o frame de animação
+frame.start()
+
