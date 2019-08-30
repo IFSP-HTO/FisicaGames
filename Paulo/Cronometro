@@ -1,0 +1,67 @@
+import simplegui
+
+global time
+time = 0
+
+def formato(t):
+    A = str(9)
+    B = str(5)
+    C = str(6)
+    D = str(1)
+    
+    return str(A+':'+B+C+'.'+D)
+    pass
+
+
+def timer_handler():
+    global time
+    time = time + 0.1
+    
+    draw_handler(str(time))
+    pass
+
+
+def draw_handler(canvas):
+    global time
+    
+    
+    canvas.draw_text(str(time), (20, 20), 30, 'Red')
+    
+    
+    pass
+
+
+def comecar_handler():
+    
+    timer.start()
+    pass
+
+
+def parar_handler():
+    
+    timer.stop()
+    pass
+
+
+def resetar_handler():
+    global time
+    
+    time = 0
+    timer.stop()
+    
+    pass
+
+
+frame = simplegui.create_frame("Home", 400, 400)
+frame.set_draw_handler(draw_handler)
+frame.start()
+
+comecar = frame.add_button('Começar', comecar_handler)
+parar = frame.add_button('Parar', parar_handler)
+resetar = frame.add_button('Resetar', resetar_handler)
+
+timer = simplegui.create_timer(1000, timer_handler)
+timer.start()
+
+
+
