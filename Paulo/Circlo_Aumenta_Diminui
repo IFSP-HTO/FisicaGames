@@ -1,4 +1,4 @@
-#https://py3.codeskulptor.org/#user303_eMWFafuvWhkUQMs.py
+#https://py3.codeskulptor.org/#user304_yMvagmcPlPbB5Zr.py
 
 import simplegui 
 
@@ -31,8 +31,12 @@ def decrease_radius():
     global ball_radius
     global RADIUS_INCREMENT
     
-    ball_radius = ball_radius - RADIUS_INCREMENT
-
+    if(ball_radius - RADIUS_INCREMENT > 0):
+        ball_radius = ball_radius - RADIUS_INCREMENT
+    else:
+        print("Não pode ter raio negativo!!!")
+    
+    
 
 # Cria o frame e assinala os callbacks aos manipuladores de eventos
 frame = simplegui.create_frame("Ball control", WIDTH, HEIGHT)
