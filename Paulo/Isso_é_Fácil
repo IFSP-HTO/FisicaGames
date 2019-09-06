@@ -5,7 +5,6 @@ import simplegui
 # Draw handler
 def draw(canvas):   
     canvas.draw_text("Isso e facil", [120,112], 20, "Red")
-    pass
     
 
 # Cria o frame e assinala os callbacks aos manipuladores de evento
