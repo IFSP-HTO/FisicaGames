@@ -1,58 +1,61 @@
+#https://py3.codeskulptor.org/#user304_ecfSHjM7kDe7RX9.py
+
 import simplegui
 
-global time
-time = 0
+global time, timeString, acerto, tentativa
+global rodando
 
-def formato(t):
-    A = str(9)
-    B = str(5)
-    C = str(6)
-    D = str(1)
-    
-    return str(A+':'+B+C+'.'+D)
-    pass
+def formato(tempo):
+    decseg = tempo % 10
+    seg = (tempo - decseg) / 10 % 60
+    minu = (tempo - decseg) / 600
+        
+    return "%.0f:%.0f.%.0f" % (minu, seg, decseg)
 
 
 def timer_handler():
-    global time
-    time = time + 0.1
+    global time, timeString
     
-    draw_handler(str(time))
-    pass
+    time = time + 1
+    print(time)
+    timeString = formato(time)
 
 
 def draw_handler(canvas):
-    global time
+    global timeString, acerto, tentativa
     
-    
-    canvas.draw_text(str(time), (20, 20), 30, 'Red')
-    
-    
-    pass
+    canvas.draw_text("%i/%i" % (acerto, tentativa), [390,30], 30, 'White')
+    canvas.draw_text(timeString, [150, 100], 40, 'Blue')
 
 
 def comecar_handler():
-    
+    global rodando
+    rodando = True 
     timer.start()
-    pass
 
 
 def parar_handler():
-    
+    global acerto, tentativa, rodando, time
     timer.stop()
-    pass
+    if(rodando):
+        tentativa = tentativa + 1
+        if(time % 10 == 0):
+            acerto = acerto + 1
+            
+    rodando = False
 
 
 def resetar_handler():
-    global time
-    
-    time = 0
+    global acerto, tentativa, rodando, time, timeString
     timer.stop()
-    
-    pass
+    time = 0
+    acerto = 0
+    tentativa = 0
+    rodando = False
+    timeString = "0:00.0"
 
 
-frame = simplegui.create_frame("Home", 400, 400)
+frame = simplegui.create_frame("Home", 450, 300)
 frame.set_draw_handler(draw_handler)
 frame.start()
 
@@ -60,8 +63,9 @@ comecar = frame.add_button('Começar', comecar_handler)
 parar = frame.add_button('Parar', parar_handler)
 resetar = frame.add_button('Resetar', resetar_handler)
 
-timer = simplegui.create_timer(1000, timer_handler)
-timer.start()
+timer = simplegui.create_timer(100, timer_handler)
+
+resetar_handler()
 
 
 
