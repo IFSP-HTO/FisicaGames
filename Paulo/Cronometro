@@ -1,4 +1,4 @@
-#https://py3.codeskulptor.org/#user304_ecfSHjM7kDe7RX9.py
+#https://py3.codeskulptor.org/#user304_VmgdyOvNRdpTXSo.py
 
 import simplegui
 
@@ -8,7 +8,7 @@ global rodando
 def formato(tempo):
     decseg = tempo % 10
     seg = (tempo - decseg) / 10 % 60
-    minu = (tempo - decseg) / 600
+    minu = tempo // 600
         
     return "%.0f:%.0f.%.0f" % (minu, seg, decseg)
 
@@ -17,7 +17,6 @@ def timer_handler():
     global time, timeString
     
     time = time + 1
-    print(time)
     timeString = formato(time)
 
 
