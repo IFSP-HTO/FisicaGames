@@ -1,4 +1,4 @@
-#https://py3.codeskulptor.org/#user304_xK2EBiE39x4AhuH.py
+#https://py3.codeskulptor.org/#user304_uSlsEHqljPMUVxs.py
 import simplegui
 
 global lista, string
@@ -9,13 +9,20 @@ lista = []
 def addTarefa(texto):
     global string, lista
     
-    lista.append(texto)
-    
-    string = ''
-    for c , v in enumerate(lista):
-        string = string + '%s: %s' % (c + 1, v)
-    
-    
+    cont = 0
+    for c, v in enumerate(lista):
+        if(v != texto):
+            cont = cont + 1
+            
+    if(cont == len(lista)):
+        lista.append(texto)
+        string = ''
+        for c , v in enumerate(lista):
+            string = string + '%s: %s' % (c + 1, v)    
+    else:    
+        print('Já há uma tarefa com esse nome')
+        
+        
 def draw(canvas):
     global lista, string
     
@@ -25,13 +32,15 @@ def draw(canvas):
 def removeTarefaNumero(num):
     global lista, string
     
-    posicao = int(num) - 1
+    if(int(num) <= len(lista)):
+        posicao = int(num) - 1
     
-    lista.pop(int (posicao))
-    string = ''
-    for c , v in enumerate(lista):
-        string = string + '%s: %s' % (c + 1, v)
-    
+        lista.pop(int (posicao))
+        string = ''
+        for c , v in enumerate(lista):
+            string = string + '%s: %s' % (c + 1, v)
+    else:
+        print('Não há uma tarefa com esse numero')
     
 def removeTarefaText(texto):
     global lista, string
