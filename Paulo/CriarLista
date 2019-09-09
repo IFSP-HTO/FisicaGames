@@ -1,9 +1,8 @@
-#https://py3.codeskulptor.org/#user304_uSlsEHqljPMUVxs.py
+#https://py3.codeskulptor.org/#user304_c6evFeSHGubjejC.py
 import simplegui
 
-global lista, string
+global lista
 
-string = ''
 lista = []
 
 def addTarefa(texto):
@@ -15,50 +14,45 @@ def addTarefa(texto):
             cont = cont + 1
             
     if(cont == len(lista)):
-        lista.append(texto)
-        string = ''
-        for c , v in enumerate(lista):
-            string = string + '%s: %s' % (c + 1, v)    
+        lista.append(texto)    
     else:    
         print('Já há uma tarefa com esse nome')
         
         
 def draw(canvas):
-    global lista, string
+    global lista
     
-    canvas.draw_text(string, [50,50], 30, 'White')
+    y = 50 
+    
+    for c, v in enumerate(lista):
+        mostra = '%s: %s' % (c + 1, v)
+        canvas.draw_text(mostra, [50,y], 30, 'White')
+        y = y + 30
     
     
 def removeTarefaNumero(num):
-    global lista, string
+    global lista
     
     if(int(num) <= len(lista)):
         posicao = int(num) - 1
-    
         lista.pop(int (posicao))
-        string = ''
-        for c , v in enumerate(lista):
-            string = string + '%s: %s' % (c + 1, v)
+
     else:
         print('Não há uma tarefa com esse numero')
     
 def removeTarefaText(texto):
-    global lista, string
+    global lista
     
     if texto in lista:
         lista.remove(texto)
-        string = ''
-        for c , v in enumerate(lista):
-            string = string + '%s: %s' % (c + 1, v)
     else:
         print('Elemento não encontrado na lista!!!')
         
         
 def limparTudo():
-    global lista, string
+    global lista
     
     lista = []
-    string = ''
 
 
 #Criar Frame
@@ -75,5 +69,4 @@ botao = frame.add_button("Limpar Tudo", limparTudo)
 
 #iniciar FRAME
 frame.start()
-
 
