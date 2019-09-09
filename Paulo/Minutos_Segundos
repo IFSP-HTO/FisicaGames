@@ -1,0 +1,26 @@
+#https://py3.codeskulptor.org/#user303_eRdCleREJVp0Xdn.py
+
+import random
+
+# Função de formatação do tempo
+def format_time(number):
+    minutos = number // 60
+    segundos = number % 60          
+    
+    return "{} minutos e {} segundos".format(minutos, segundos)
+
+
+###################################################
+# Testes
+
+print (format_time(23))
+print (format_time(1237))
+print (format_time(0))
+print (format_time(1860))
+
+###################################################
+# Saída no console
+#0 minutos e 23 segundos
+#20 minutos e 37 segundos
+#0 minutos e 0 segundos
+#31 minutos e 0 segundos
