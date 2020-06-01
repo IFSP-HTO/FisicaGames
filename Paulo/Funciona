@@ -1,0 +1,15 @@
+#https://py3.codeskulptor.org/#user303_UBUK5gFjy1xtvza.py
+
+import simplegui 
+
+# Handler para o desenho (draw)
+def draw(canvas):
+    canvas.draw_text("Funciona!",[120, 112], 48, "Red")
+    
+
+# Cria o frame e assinala os callbacks aos manipuladores de eventos
+frame = simplegui.create_frame("It works", 400, 200)
+frame.set_draw_handler(draw)
+frame.start()
+
+

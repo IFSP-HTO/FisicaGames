@@ -1,0 +1,72 @@
+#https://py3.codeskulptor.org/#user304_c6evFeSHGubjejC.py
+import simplegui
+
+global lista
+
+lista = []
+
+def addTarefa(texto):
+    global string, lista
+    
+    cont = 0
+    for c, v in enumerate(lista):
+        if(v != texto):
+            cont = cont + 1
+            
+    if(cont == len(lista)):
+        lista.append(texto)    
+    else:    
+        print('Já há uma tarefa com esse nome')
+        
+        
+def draw(canvas):
+    global lista
+    
+    y = 50 
+    
+    for c, v in enumerate(lista):
+        mostra = '%s: %s' % (c + 1, v)
+        canvas.draw_text(mostra, [50,y], 30, 'White')
+        y = y + 30
+    
+    
+def removeTarefaNumero(num):
+    global lista
+    
+    if(int(num) <= len(lista)):
+        posicao = int(num) - 1
+        lista.pop(int (posicao))
+
+    else:
+        print('Não há uma tarefa com esse numero')
+    
+def removeTarefaText(texto):
+    global lista
+    
+    if texto in lista:
+        lista.remove(texto)
+    else:
+        print('Elemento não encontrado na lista!!!')
+        
+        
+def limparTudo():
+    global lista
+    
+    lista = []
+
+
+#Criar Frame
+frame = simplegui.create_frame("Frame", 450, 300)
+frame.set_draw_handler(draw)
+
+#inputs
+addTarefa = frame.add_input("Nova tarefa:", addTarefa, 100)
+removeTarefaNum = frame.add_input("Remover tarefa pelo número:", removeTarefaNumero, 100)
+removeTarefaText = frame.add_input("Remover tarefa pelo nome:", removeTarefaText, 100)
+
+#Criar o botão
+botao = frame.add_button("Limpar Tudo", limparTudo)
+
+#iniciar FRAME
+frame.start()
+

@@ -1,0 +1,87 @@
+#Link para CodeSkuptor: https://py3.codeskulptor.org/#user303_i0yecwQiDd08xDN.py
+
+import random
+import simplegui
+
+options = {
+    0: "pedra",
+    1: "spock",
+    2: "papel",
+    3: "lagarto",
+    4: "tesoura"
+}
+
+
+def name_to_number(player_choice):
+    player_number = -1
+    for cont in range(5):
+        if options[cont] == player_choice:
+            player_number = cont   
+        
+
+    return player_number
+    pass
+
+def number_to_name(comp_number): 
+    comp_choice = ""
+    for cont in range(5):
+        if comp_number == cont:
+            comp_choice = options[cont]
+    
+    return comp_choice
+
+
+def rpsls(player_choice):
+    print()
+    print('Jogador escolhe {}'.format(player_choice))
+
+    player_number = name_to_number(player_choice)
+
+    comp_number = int(random.randrange(0, 4))
+
+    comp_choice = number_to_name(comp_number)
+    print('Computador escolhe {}'.format(comp_choice))
+
+    result = player_number - comp_number
+
+    if result == 0:
+        print('Empate!')
+
+    else:
+        if player_number == 0:
+            if result == -4 or result == -3:
+                print('Jogador Vence!')
+            else:
+                print('Computador Vence!')
+
+        if player_number == 1:
+            if result == 1 or result == -3:
+                print('Jogador Vence!')
+            else:
+                print('Computador Vence!')
+
+        if player_number == 2 or player_number == 3 or player_number == 4:
+            if result == 1 or result == 2:
+                print('Jogador Vence!')
+            else:
+                print('Computador Vence!')
+    pass
+
+
+def verifica_escolha(test):
+    for cont in range(5):
+        if options[cont] == player_choice.get_text():
+            rpsls(player_choice.get_text())
+            return
+        
+    print("\n---------------------------------\nVoce escolheu um valor invalido\n---------------------------------\n")
+    pass
+
+#Criar o frame com os input e botões:
+
+frame = simplegui.create_frame("Pedra, papel e tesoura", 250, 250)
+
+player_choice = frame.add_input("Entre com sua escolha", verifica_escolha,100)
+    
+frame.start()
+

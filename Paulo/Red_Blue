@@ -1,0 +1,53 @@
+#Link para CodeSkuptor: https://py3.codeskulptor.org/#user303_ATMpJ021HL8ZZwz.py
+
+# Registre três botões
+
+###################################################
+# Adicione o código relevante onde necessário abaixo
+
+import simplegui 
+
+
+# Handlers para os botões
+def set_red():
+    global color
+    color = "red"
+    pass
+    
+def set_blue():
+    global color
+    color = "blue"
+    pass
+    
+def print_color():
+    print (color)
+    pass
+
+# Cria o frame
+frame = simplegui.create_frame("Set and print colors", 200, 200)
+
+# Inicia a animação do frame
+frame.start()
+
+# Cria 3 botões
+frame.add_button('Escolher_Vermelho', set_red)
+frame.add_button('Escolher_Azul', set_blue)
+frame.add_button('Imprimir_Cor', print_color)
+
+###################################################
+# Teste
+
+set_red()
+print_color()
+set_blue()
+print_color()
+set_red()
+set_blue()
+print_color()
+
+###################################################
+# Resultados esperados do teste
+
+#red
+#blue
+#blue

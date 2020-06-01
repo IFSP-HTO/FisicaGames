@@ -1,0 +1,88 @@
+#link no Codeskulptor: https://py3.codeskulptor.org/#user303_fJ9HfYHCJsevSWn.py
+
+import simplegui
+import random
+
+def new_game():
+    global secret_number
+    global cont
+    global tentat
+    
+    if cont == 1:
+        secret_number = int(random.randrange(0, 100))
+    else:
+        secret_number = int(random.randrange(0, 1000))
+      
+    tentat = int(7)
+    print("___________________________________\nNOVO JOGO\nVoce tem {} tentatvias restantes\n".format(tentat))
+    
+    pass
+
+
+def range100():
+    global secret_number
+    global cont
+    
+    secret_number = int(random.randrange(0, 100))
+    cont == int (1)
+    
+    print("Range mudado para [0,100)")
+    new_game()
+    
+    pass
+
+
+def range1000():
+    global secret_number
+    global cont  
+    cont = int (2)
+    
+    secret_number = int(random.randrange(0, 1000))
+    
+    print("Range mudado para [0,1000)")
+    new_game()
+    
+    pass
+    
+    
+def input_guess(guess):
+
+    global tentat
+    
+    palpite = int(guess)
+    print("O palpite foi: {}".format(palpite))
+    
+    if secret_number > palpite:
+        print("O numero secreto eh maior")
+        tentat = tentat - 1 
+        print("Voce tem {} tentatvias restantes\n".format(tentat)) 
+        
+    elif secret_number < palpite:
+        print("O numero secreto eh menor")   
+        tentat = tentat - 1
+        print("Voce tem {} tentatvias restantes\n".format(tentat)) 
+        
+    else: 
+        print("Voce acertou!!!O numero {} eh o numero secreto!!!\n".format(secret_number))
+    
+    if tentat == 0:
+        print("Acabou suas tentativas!!!! O numero secreto era {}\n".format(secret_number))
+        new_game()
+        
+    pass
+
+
+global cont
+global tentat
+cont = int(1)
+tentat = int(7)
+   
+frame = simplegui.create_frame("Adivinhe o número!", 250, 250)
+
+guess = frame.add_input("Coloque seu palpite:", input_guess,100)
+
+run = frame.add_button("Novo Jogo", new_game)
+range100 = frame.add_button("Range é [0,100)", range100)
+range1000 = frame.add_button("Range é [0,1000)", range1000)
+ 
+new_game()
